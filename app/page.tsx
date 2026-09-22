@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-emerald-50 px-6 py-16 text-center text-zinc-900">
       <p className="mb-4 text-sm font-semibold tracking-widest text-emerald-700">
-        DR.BYE · 반려동물 헬스케어
+        Dr.By · 반려동물 헬스케어
       </p>
       <h1 className="text-5xl font-bold text-emerald-900">닥터바이</h1>
       <p className="mt-8 max-w-xl text-xl leading-relaxed text-zinc-700">
