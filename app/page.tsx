@@ -1,11 +1,15 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center text-zinc-900">
-      <h1 className="text-4xl font-bold">안녕하세요, 소윤님의 첫 페이지입니다</h1>
-      <p className="max-w-md text-lg text-zinc-600">
-        Next.js로 만들어 GitHub에 올리고 Vercel로 배포한 한 장짜리 페이지입니다.
+    <main className="flex min-h-screen flex-col items-center justify-center bg-emerald-50 px-6 py-16 text-center text-zinc-900">
+      <p className="mb-4 text-sm font-semibold tracking-widest text-emerald-700">
+        DR.BYE · 반려동물 헬스케어
       </p>
-      <p className="text-sm text-zinc-400">에이앤바이오(ANBIO) · 닥터바이 · 바이랩</p>
+      <h1 className="text-5xl font-bold text-emerald-900">닥터바이</h1>
+      <p className="mt-8 max-w-xl text-xl leading-relaxed text-zinc-700">
+        닥터바이는 반려견·반려묘와 보호자 모두 행복하고 건강한 라이프를
+        누릴 수 있도록 도와주는 반려동물 헬스케어 브랜드입니다.
+      </p>
+      <p className="mt-16 text-sm text-zinc-500">에이앤바이오(ANBIO)</p>
     </main>
   );
 }
