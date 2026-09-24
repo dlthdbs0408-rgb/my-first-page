@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function InquiryForm() {
   const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [errorText, setErrorText] = useState("");
@@ -15,11 +16,12 @@ export default function InquiryForm() {
     const res = await fetch("/api/inquiries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, message }),
+      body: JSON.stringify({ name, contact, message }),
     });
     if (res.ok) {
       setStatus("done");
       setName("");
+      setContact("");
       setMessage("");
     } else {
       const data = await res.json().catch(() => ({}));
@@ -38,6 +40,17 @@ export default function InquiryForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:border-emerald-600 focus:outline-none"
+        />
+      </label>
+      <label className="mt-4 block text-sm font-medium text-zinc-700">
+        연락처
+        <input
+          type="text"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          required
+          placeholder="전화번호 또는 이메일"
           className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-zinc-900 focus:border-emerald-600 focus:outline-none"
         />
       </label>

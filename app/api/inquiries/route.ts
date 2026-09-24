@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { name, message } = await request.json().catch(() => ({}));
+  const { name, contact, message } = await request.json().catch(() => ({}));
 
-  if (typeof name !== "string" || typeof message !== "string" || !name.trim() || !message.trim()) {
-    return NextResponse.json({ error: "이름과 내용을 모두 입력해 주세요." }, { status: 400 });
+  const fields = [name, contact, message];
+  if (fields.some((f) => typeof f !== "string" || !f.trim())) {
+    return NextResponse.json({ error: "이름, 연락처, 내용을 모두 입력해 주세요." }, { status: 400 });
   }
 
   const url = process.env.SUPABASE_URL;
@@ -21,7 +22,7 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
       Prefer: "return=minimal",
     },
-    body: JSON.stringify({ name: name.trim(), message: message.trim() }),
+    body: JSON.stringify({ name: name.trim(), contact: contact.trim(), message: message.trim() }),
   });
 
   if (!res.ok) {
